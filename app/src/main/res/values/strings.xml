@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ona na Ongea</string>
+    <string name="title_flashcard_list">Flash Cards</string>
+    <string name="title_flashcard_detail">Flash Card Detail</string>
+</resources>
