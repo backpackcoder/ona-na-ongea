@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-import org.hammermission.onao.dummy.FlashCard;
+import org.hammermission.onao.dummy.Card;
 
 import java.util.List;
 
@@ -67,15 +67,15 @@ public class FlashCardListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(FlashCard.LIST));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(Card.LIST));
     }
 
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<FlashCard> mValues;
+        private final List<Card> mValues;
 
-        public SimpleItemRecyclerViewAdapter(List<FlashCard> items) {
+        public SimpleItemRecyclerViewAdapter(List<Card> items) {
             mValues = items;
         }
 
@@ -121,7 +121,7 @@ public class FlashCardListActivity extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mIdView;
-            public FlashCard mItem;
+            public Card mItem;
 
             public ViewHolder(View view) {
                 super(view);

@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.hammermission.onao.dummy.FlashCard;
+import org.hammermission.onao.dummy.Card;
 
 /**
- * A fragment representing a single FlashCard detail screen.
+ * A fragment representing a single Card detail screen.
  * This fragment is either contained in a {@link FlashCardListActivity}
  * in two-pane mode (on tablets) or a {@link FlashCardDetailActivity}
  * on handsets.
@@ -27,7 +27,7 @@ public class FlashCardDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private FlashCard mItem;
+    private Card mItem;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -44,7 +44,7 @@ public class FlashCardDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = FlashCard.MAP.get(getArguments().getString(ARG_ITEM_ID));
+            mItem = Card.MAP.get(getArguments().getString(ARG_ITEM_ID));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);

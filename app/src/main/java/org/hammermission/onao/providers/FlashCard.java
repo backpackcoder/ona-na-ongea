@@ -3,7 +3,7 @@ package org.hammermission.onao.providers;
 import android.content.UriMatcher;
 
 /**
- * FlashCard constants
+ * Card constants
  */
 
 public final class FlashCard {

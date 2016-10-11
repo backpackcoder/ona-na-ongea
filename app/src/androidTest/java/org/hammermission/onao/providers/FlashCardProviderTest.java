@@ -1,12 +1,14 @@
 package org.hammermission.onao.providers;
 
-import android.content.UriMatcher;
+import android.content.ContentResolver;
 import android.net.Uri;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ProviderTestCase2;
+import android.test.mock.MockContentResolver;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -15,40 +17,33 @@ import org.junit.runner.RunWith;
  */
 @RunWith(AndroidJUnit4.class)
 public class FlashCardProviderTest extends ProviderTestCase2<FlashCardProvider> {
-    /**
-     * Constructor.
-     *
-     * @param providerClass     The class name of the provider under test
-     * @param providerAuthority The provider's authority string
-     */
-    public FlashCardProviderTest(Class<FlashCardProvider> providerClass, String providerAuthority) {
-        super(providerClass, providerAuthority);
+    public FlashCardProviderTest() {
+        super(FlashCardProvider.class, FlashCard.AUTHORITY);
     }
 
+    private MockContentResolver mContentResolver;
+
+    @Before
     @Override
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
         setContext(InstrumentationRegistry.getTargetContext());
         super.setUp();
+        mContentResolver = this.getMockContentResolver();
     }
 
-
-    /**
-     * Tests the FlashCardProvider's URI matcher
-     */
     @Test
-    public void testUriMatcher() throws Exception {
-        UriMatcher matcher = FlashCard.GetUriMatcher();
-        checkUris(matcher, TestData.URIS_BAD, -1);
-        checkUris(matcher, TestData.URIS_ONE_ROW, FlashCard.MATCH_SINGLE_ROW);
-        checkUris(matcher, TestData.URI_ALL_ROWS, FlashCard.MATCH_ALL_ROWS);
-        checkUris(matcher, TestData.URIS_IMAGES, FlashCard.MATCH_IMAGE);
-        checkUris(matcher, TestData.URIS_AUDIO, FlashCard.MATCH_AUDIO);
+    public void testGetType() throws Exception {
+        //checkUris(matcher, TestData.URIS_BAD, -1);
+        checkUris(TestData.URIS_ONE_ROW, FlashCard.MATCH_SINGLE_ROW_MIME);
+        checkUris(TestData.URI_ALL_ROWS, FlashCard.MATCH_ALL_ROWS_MIME);
+        checkUris(TestData.URIS_IMAGES, FlashCard.MATCH_IMAGE_MIME);
+        checkUris(TestData.URIS_AUDIO, FlashCard.MATCH_AUDIO_MIME);
     }
     //Tests matching an Array of URIs against an expected result
-    private static void checkUris(UriMatcher matcher, String[] uris, int expected) {
+    private void checkUris(String[] uris, String expectedMimeType) {
         for (String uri : uris) {
-            Assert.assertEquals("Failed for " + uri,
-                    expected, matcher.match(Uri.parse(uri)));
+            String mimeType = mContentResolver.getType(Uri.parse(uri));
+            Assert.assertEquals("Failed for " + uri, expectedMimeType, mimeType);
         }
     }
 

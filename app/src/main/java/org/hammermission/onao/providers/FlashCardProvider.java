@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 import java.net.MalformedURLException;
 
 /**
- * FlashCard content provider
+ * Card content provider
  */
 
 public class FlashCardProvider extends ContentProvider {

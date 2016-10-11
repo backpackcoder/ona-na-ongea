@@ -10,44 +10,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="org.hammermission.onao.CardActivity">
 
-    <EditText
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/etOriginal"
-        android:textAlignment="center"
-        android:clickable="false"
-        android:enabled="true"
-        android:inputType="text"
-        android:contentDescription="Original Word" />
+        android:id="@+id/kiswahili"
+        android:textAlignment="center" />
 
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <ImageView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight=".5" >
+        android:layout_weight=".5"
+        android:id="@+id/picture" />
 
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/ivPicture" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/butPicture"
-            android:layout_gravity="bottom|right"
-            android:src="@drawable/ic_photo_camera_black_48dp"
-            android:padding="10dp"/>
-    </FrameLayout>
-
-    <EditText
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/etTranslation"
-        android:textAlignment="center"
-        android:clickable="true"
-        android:enabled="true"
-        android:inputType="text"
-        android:contentDescription="Translated Word" />
+        android:id="@+id/english"
+        android:textAlignment="center" />
 </LinearLayout>
